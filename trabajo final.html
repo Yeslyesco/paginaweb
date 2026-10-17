@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Little Pony</title>
+
+<style>
+/* ESTILOS GENERALES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    background: #fff8fc;
+    color: #51465f;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+section {
+    padding: 65px 7%;
+    scroll-margin-top: 75px;
+}
+
+h2 {
+    color: #795a9e;
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.section-description {
+    max-width: 700px;
+    margin: 0 auto 35px;
+    text-align: center;
+    color: #776b81;
+}
+
+/* MEN� DE NAVEGACI�N */
+header {
+    background: #ffffffed;
+    padding: 15px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 3px 15px #9b76b21a;
+}
+
+.logo {
+    color: #a16cc0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+    font-size: 13px;
+}
+
+nav a:hover {
+    color: #e477b8;
+}
+
+/* PORTADA */
+.hero {
+    min-height: 570px;
+    padding: 80px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background:
+        radial-gradient(circle at 10% 20%, #ffffffa8 0 4px, transparent 5px),
+        radial-gradient(circle at 85% 30%, #ffffffb5 0 6px, transparent 7px),
+        radial-gradient(circle at 20% 80%, #ffffff9c 0 5px, transparent 6px),
+        linear-gradient(135deg, #e9d9ff, #fbdcf0, #d6eaff);
+}
+
+.hero-content {
+    max-width: 850px;
+}
+
+.hero-label {
+    display: inline-block;
+    padding: 8px 18px;
+    background: #ffffffa8;
+    border-radius: 30px;
+    color: #9265b1;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    color: #875ca9;
+    font-size: clamp(35px, 7vw, 68px);
+    line-height: 1.12;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: 0 auto 25px;
+    font-size: 17px;
+    color: #685b79;
+}
+
+.main-button {
+    display: inline-block;
+    border: none;
+    background: linear-gradient(120deg, #d985c6, #a58be4);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 35px;
+    font-size: 15px;
+    font-weight: bold;
+    box-shadow: 0 6px 18px #ad82c84a;
+    transition: transform .2s;
+}
+
+.main-button:hover {
+    transform: translateY(-3px);
+}
+
+.hero-decoration {
+    font-size: 30px;
+    margin-top: 25px;
+    letter-spacing: 12px;
+}
+
+/* TARJETAS DE PERSONAJES */
+.pony-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.pony-card {
+    background: white;
+    border-radius: 22px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 5px 22px #a88bb21b;
+    border: 1px solid #f1e6f6;
+    transition: transform .25s;
+}
+
+.pony-card:hover {
+    transform: translateY(-5px);
+}
+
+.pony-picture {
+    min-height: 155px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 60px;
+    padding: 15px;
+}
+
+.pony-card:nth-child(1) .pony-picture {
+    background: #e7dfff;
+}
+
+.pony-card:nth-child(2) .pony-picture {
+    background: #d9edff;
+}
+
+.pony-card:nth-child(3) .pony-picture {
+    background: #ffe0ef;
+}
+
+.pony-card:nth-child(4) .pony-picture {
+    background: #fff0c9;
+}
+
+.pony-card:nth-child(5) .pony-picture {
+    background: #ffe2c9;
+}
+
+.pony-card:nth-child(6) .pony-picture {
+    background: #f1ddff;
+}
+
+.pony-picture span {
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-top: 5px;
+}
+
+.pony-info {
+    padding: 22px;
+}
+
+.pony-info h3 {
+    font-size: 21px;
+    color: #8964a8;
+    margin-bottom: 8px;
+}
+
+.pony-info p {
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.qualities {
+    display: inline-block;
+    background: #f6edf9;
+    color: #956eaf;
+    border-radius: 20px;
+    padding: 6px 12px;
+    font-size: 11px;
+}
+
+/* TEST DE PERSONALIDAD */
+#test {
+    background: linear-gradient(135deg, #f0e7ff, #fff0f8);
+}
+
+.quiz-box {
+    max-width: 800px;
+    margin: auto;
+    padding: 35px;
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 7px 30px #9975b51a;
+}
+
+.quiz-intro {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.progress-area {
+    background: #f1e8f5;
+    height: 9px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.progress-bar {
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #d985c6, #9b8ae5);
+    transition: width .3s;
+}
+
+.question {
+    padding: 22px 0;
+    border-bottom: 1px solid #f0e7f3;
+}
+
+.question h3 {
+    color: #785a94;
+    font-size: 17px;
+    margin-bottom: 15px;
+}
+
+.option {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 12px 14px;
+    border-radius: 12px;
+    margin: 7px 0;
+    background: #fcf9fd;
+    border: 1px solid #f0e7f5;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.option:hover {
+    background: #f8effb;
+}
+
+.option:has(input:checked) {
+    border-color: #c69cdb;
+    background: #f4eafa;
+}
+
+.option input {
+    margin-top: 5px;
+    accent-color: #a879c6;
+}
+
+.quiz-actions {
+    text-align: center;
+    margin-top: 28px;
+}
+
+.quiz-message {
+    color: #b35e93;
+    margin-bottom: 15px;
+    font-size: 13px;
+}
+
+/* RESULTADO */
+#resultado {
+    display: none;
+    max-width: 800px;
+    margin: 35px auto 0;
+    padding: 35px;
+    background: white;
+    border: 2px solid #ead9f5;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 8px 25px #a58be42b;
+}
+
+.result-symbol {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f8dff0, #e5dcff);
+    display: grid;
+    place-items: center;
+    font-size: 65px;
+}
+
+#resultado h3 {
+    font-size: 30px;
+    color: #9066ae;
+    margin-bottom: 10px;
+}
+
+#resultado p {
+    margin: 12px auto;
+    max-width: 600px;
+}
+
+.result-trait {
+    display: inline-block;
+    margin: 10px 4px;
+    padding: 7px 13px;
+    border-radius: 20px;
+    background: #f6eafa;
+    color: #9566ac;
+    font-size: 12px;
+}
+
+/* MAGIA DE LA AMISTAD */
+.friendship {
+    background: white;
+    text-align: center;
+}
+
+.values-grid {
+    max-width: 1000px;
+    margin: 35px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.value-card {
+    padding: 25px 18px;
+    background: #fcf7ff;
+    border-radius: 20px;
+    border: 1px solid #f1e6f7;
+}
+
+.value-card .symbol {
+    font-size: 35px;
+}
+
+.value-card h3 {
+    color: #9166ac;
+    margin: 8px 0;
+}
+
+.value-card p {
+    font-size: 13px;
+}
+
+/* PIE DE P�GINA */
+footer {
+    padding: 35px 7%;
+    text-align: center;
+    background: linear-gradient(120deg, #d9c8f8, #f5d4e9);
+    color: #70557f;
+}
+
+footer h3 {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+footer p {
+    font-size: 13px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin: 18px 0;
+    font-size: 13px;
+}
+
+/* ADAPTACI�N A CELULARES */
+@media (max-width: 800px) {
+    header {
+        flex-direction: column;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .pony-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .values-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    section {
+        padding: 50px 5%;
+    }
+}
+
+@media (max-width: 500px) {
+    .pony-grid,
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding: 65px 6%;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    h2 {
+        font-size: 27px;
+    }
+
+    .quiz-box {
+        padding: 20px;
+    }
+
+    #resultado {
+        padding: 22px;
+    }
+
+    .option {
+        font-size: 13px;
+    }
+}
+.pony-picture1 {    min-height: 155px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 60px;
+    padding: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- MEN� -->
+<header>
+    <a href="#inicio" class="logo">🦄 Cutie Mark</a>
+
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#personajes">Conocelos</a>
+        <a href="#test">Test</a>
+        <a href="#amistad">La amistad</a>    </nav>
+</header>
+<!-- BOTÓN DE MÚSICA -->
+<div style="text-align: center; margin: 20px;">
+    <audio id="musicaFondo" loop>
+        <source src="./cancion.mp4" type="audio/mp4">
+    </audio>
+
+    <button
+        id="botonMusica"
+        onclick="controlarMusica()"
+        style="background-color: #d9a7ff;
+               color: #ffffff;
+               border: none;
+               padding: 12px 20px;
+               border-radius: 20px;
+               font-size: 16px;
+               cursor: pointer;">
+        🎵 Reproducir música
+    </button>
+</div>
+
+<script>
+function controlarMusica() {
+    const musica = document.getElementById("musicaFondo");
+    const boton = document.getElementById("botonMusica");
+
+    if (musica.paused) {
+        musica.play().then(() => {
+            boton.textContent = "⏸️ Pausar música";
+        }).catch(() => {
+            alert("Revisa que el archivo cancion.mp4 esté en la carpeta de tu proyecto.");
+        });
+    } else {
+        musica.pause();
+        boton.textContent = "🎵 Reproducir música";
+    }
+}
+</script>
+
+<!-- PORTADA PRINCIPAL -->
+<section class="hero" id="inicio">
+    <div class="hero-content">
+
+<p><h1 class="pony-picture"><em>
+ <span class="hero-label"><h1>° MI LITTLE PONY °</h1></span>
+
+<h2>&nbsp;</h2>
+<h2>Alguna vez te has preguntado</h2>
+<h1>¿QUÉ PONY ERES SEGÚN TU PERSONALIDAD?</h1>
+        <p>
+            Todos tenemos algo especial que nos hace únicos.
+            Descubre qué personaje de My Little Pony representa
+            mejor tu personalidad, tus cualidades y tu manera
+        de ver el mundo.        </p>
+
+        <a href="#test" class="main-button">
+        Descubreloooo Ahoraaaa!!!       </a>
+
+        <div class="hero-decoration">✰✰✰✰✰✰✰</div>
+
+  </div>
+</section>
+
+<!-- PRESENTACI�N -->
+<section id="personajes">
+
+    <h2>Es horaa de conocer a los ponisssss, estas listooooooo</h2>
+
+    <p class="section-description">
+        Cada pony tiene una personalidad diferente y una cualidad
+    que lo hace especial. 
+    Conoce a los seis personajes principales antes
+    de comenzar el test. </p>
+    <div class="pony-grid">
+
+        <article class="pony-card">
+
+    <div class="pony-picture">
+        <img src="Twilight Sparkle.jpeg" width="200" height="200">
+    </div>
+
+    <div class="pony-info">
+        <h3>Twilight Sparkle</h3>
+
+        <p>
+            Es inteligente, estudiosa y organizada.
+            Le gusta aprender, resolver problemas
+            y descubrir cosas nuevas.
+        </p>
+
+        <span class="qualities">
+            - Inteligencia - Aprendizaje - Magia
+        </span>
+    </div>
+
+</article>
+        <!-- RAINBOW DASH -->
+        <article class="pony-card">
+            <div class="pony-picture">
+               <img src="rainbow.jpeg"width="200" height="200">
+            </div>
+
+            <div class="pony-info">
+                <h3>Rainbow Dash</h3>
+
+                <p>
+                    Es valiente, competitiva y decidida.
+                    Le gustan los desafíos y siempre procura
+                    apoyar a sus amigos.
+                </p>
+
+                <span class="qualities">
+                    -Lealtad -Valentía -Confianza
+                </span>
+            </div>
+        </article>
+
+        <!-- PINKIE PIE -->
+        <article class="pony-card">
+            <div class="pony-picture">
+               <img src="Pinkie Pie.jpeg"width="200" height="200">
+            </div>
+
+            <div class="pony-info">
+                <h3>Pinkie Pie</h3>
+
+                <p>
+                    Es alegre, divertida y espontánea.
+                    Disfruta hacer reír a los demás y
+                    compartir momentos felices.
+                </p>
+
+                <span class="qualities">
+                    -Alegría -Creatividad -Diversión
+                </span>
+            </div>
+        </article>
+
+        <!-- FLUTTERSHY -->
+        <article class="pony-card">
+            <div class="pony-picture">
+             <img src="Fluttershy.jpeg"width="200" height="200">
+            </div>
+
+            <div class="pony-info">
+                <h3>Fluttershy</h3>
+
+                <p>
+                    Es amable, sensible y comprensiva.
+                    Le gusta cuidar a los animales y
+                    escuchar a quienes necesitan apoyo.
+                </p>
+
+                <span class="qualities">
+                    -Bondad -Empatía -Comprensión
+                </span>
+            </div>
+        </article>
+
+        <!-- APPLEJACK -->
+        <article class="pony-card">
+            <div class="pony-picture">
+               <img src="Applejack.jpeg"width="200" height="200">
+            </div>
+
+            <div class="pony-info">
+                <h3>Applejack</h3>
+
+                <p>
+                    Es honesta, trabajadora y responsable.
+                    Valora a su familia y demuestra con
+                    acciones que se puede confiar en ella.
+                </p>
+
+                <span class="qualities">
+                    -Honestidad -Esfuerzo -Confianza
+                </span>
+            </div>
+        </article>
+
+        <!-- RARITY -->
+        <article class="pony-card">
+            <div class="pony-picture">
+        <img src="Rarity.jpeg" width="200" height="200">
+            </div>
+
+            <div class="pony-info">
+                <h3>Rarity</h3>
+
+                <p>
+                    Es creativa, detallista y generosa.
+                    Le apasiona el diseño y disfruta
+                    compartir sus talentos con los demás.
+                </p>
+
+                <span class="qualities">
+                    -Creatividad -Generosidad -Estilo
+                </span>
+            </div>
+        </article>
+
+    </div>
+</section>
+
+<!-- TEST DE PERSONALIDAD -->
+<section id="test">
+
+    <h2>Estas listo para conocer tu pony </h2>
+	 <h1 align="center"> 🦄 COMENCEMOSSSSSSS 🦄</h1>
+    <p>&nbsp;</p>
+    <p class="section-description">
+        Contesta las siguientes preguntas eligiendo la opción
+        que mejor represente tu forma de ser. Al terminar,
+        descubrirás con qué pony tienes más coincidencias contigo.    </p>
+
+    <div class="quiz-box">
+
+        <div class="quiz-intro">
+            <h3>Test de Pony-Personalidad 🦄</h3>
+            <p>Responde con sinceridad y déjate llevar por la magia.</p>
+        </div>
+
+        <div class="progress-area">
+            <div class="progress-bar" id="progress"></div>
+        </div>
+
+        <form id="quizForm">
+
+            <!-- PREGUNTA 1 -->
+            <div class="question">
+                <h3>1. Cuando tienes un problema, ¿Qué haces?</h3>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="twilight" required>
+                    Analizo la situación y busco una solución.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="rainbow">
+                    Enfrento el problema sin rendirme.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="pinkie">
+                    Intento mantener una actitud positiva.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="fluttershy">
+                    Pienso en cómo se sienten los demás.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="applejack">
+                    Actúo con sinceridad y responsabilidad.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="rarity">
+                    Busco una solución creativa.                </label>
+            </div>
+
+            <!-- PREGUNTA 2 -->
+            <div class="question">
+                <h3>2. ¿Qué valoras más en una amistad?</h3>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="twilight" required>
+                    Aprender y crecer juntos.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="rainbow">
+                    La lealtad y el apoyo.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="pinkie">
+                    Reír y compartir momentos felices.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="fluttershy">
+                    La comprensión y el cariño.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="applejack">
+                    La confianza y la honestidad.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="rarity">
+                    La generosidad y los pequeños detalles.                </label>
+            </div>
+
+            <!-- PREGUNTA 3 -->
+            <div class="question">
+                <h3>3. ¿Cómo te describirían tus amigos?</h3>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="twilight" required>
+                    Inteligente y organizada.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="rainbow">
+                    Valiente y decidida.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="pinkie">
+                    Divertida y alegre.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="fluttershy">
+                    Amable y tranquila.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="applejack">
+                    Responsable y sincera.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="rarity">
+                    Creativa y detallista.                </label>
+            </div>
+
+            <!-- PREGUNTA 4 -->
+            <div class="question">
+                <h3>4. ¿Qué actividad prefieres?</h3>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="twilight" required>
+                    Leer, aprender o resolver acertijos.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="rainbow">
+                    Practicar un deporte o vivir aventuras.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="pinkie">
+                    Organizar una fiesta con amigos.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="fluttershy">
+                    Cuidar animales o disfrutar de la naturaleza.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="applejack">
+                    Realizar un proyecto y trabajar en equipo.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="rarity">
+                    Diseñar, decorar o hacer arte.                </label>
+                <p><h2>¡OHHHHHHHH!, ESTAS HACIENDO MAGIA. CONTINUAAAAAAAAA  </h2></p>
+            </div>
+
+            <!-- PREGUNTA 5 -->
+            <div class="question">
+                <h3>5. Si alguien está triste, ¿Qué harías?</h3>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="twilight" required>
+                    Le ayudaría a encontrar una solución.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="rainbow">
+                    Le recordaría que puede superar el problema.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="pinkie">
+                    Intentaría hacerlo reír.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="fluttershy">
+                    Lo escucharía con paciencia y cariño.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="applejack">
+                    Le ofrecería ayuda sincera.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="rarity">
+                    Tendría un detalle especial para animarlo.                </label>
+            </div>
+
+            <!-- PREGUNTA 6 -->
+            <div class="question">
+                <h3>6. ¿Qué cualidad te representa más?</h3>
+
+                <label class="option">
+                    <input type="radio" name="q6" value="twilight" required>
+                    Mi curiosidad y mis ganas de aprender.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q6" value="rainbow">
+                    Mi valentía y determinación.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q6" value="pinkie">
+                    Mi alegría y espontaneidad.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q6" value="fluttershy">
+                    Mi sensibilidad y empatía.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q6" value="applejack">
+                    Mi esfuerzo y honestidad.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q6" value="rarity">
+                    Mi imaginación y creatividad.                </label>
+            </div>
+
+            <!-- PREGUNTA 7 -->
+            <div class="question">
+                <h3>7. ¿Qué lugar elegirías para pasar el día?</h3>
+
+                <label class="option">
+                    <input type="radio" name="q7" value="twilight" required>
+                    Una biblioteca llena de libros interesantes.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q7" value="rainbow">
+                    Un lugar donde pueda vivir una aventura.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q7" value="pinkie">
+                    Una fiesta llena de música y amigos.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q7" value="fluttershy">
+                    Un jardín tranquilo rodeado de animales.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q7" value="applejack">
+                    Una granja rodeada de naturaleza.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q7" value="rarity">
+                    Un taller de arte y diseño.                </label>
+            </div>
+
+            <!-- PREGUNTA 8 -->
+            <div class="question">
+                <h3>8. ¿Qué te gustaría aportar al mundo?</h3>
+
+                <label class="option">
+                    <input type="radio" name="q8" value="twilight" required>
+                    Conocimiento y nuevas ideas.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q8" value="rainbow">
+                    Inspiración para superar desafíos.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q8" value="pinkie">
+                    Alegría y momentos inolvidables.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q8" value="fluttershy">
+                    Comprensión, cariño y tranquilidad.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q8" value="applejack">
+                    Honestidad, compromiso y confianza.                </label>
+
+                <label class="option">
+                    <input type="radio" name="q8" value="rarity">
+                    Creatividad, belleza y generosidad.                </label>
+            </div>
+
+            <div class="quiz-actions">
+
+                <p id="quizMessage" class="quiz-message"></p>
+
+                <button type="submit" class="main-button">
+                    Conoceee tu Ponyyyyyy                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- RESULTADO AUTOM�TICO -->
+    <div id="resultado" aria-live="polite">
+
+        <div class="result-symbol" id="resultSymbol">??</div>
+
+        <h3 id="resultName"></h3>
+
+        <p id="resultTraits"></p>
+
+        <p id="resultDescription"></p>
+
+        <p>
+            <strong>Tu mensaje mágico 🦄:</strong>        </p>
+
+        <p id="resultMessage"></p>
+
+        <div id="resultTags"></div>
+
+        <br>
+
+        <button
+            type="button"
+            class="main-button"
+            onclick="restartQuiz()">
+            Volver a realizar el test 🦄       </button>
+    </div>
+</section>
+
+<!-- LA MAGIA DE LA AMISTAD -->
+<section class="friendship" id="amistad">
+
+    <h2>La magia de la amistad 🦄</h2>
+
+    <p class="section-description">
+        Los ponis nos enseñan que las diferencias no nos separan:
+        pueden ayudarnos a aprender, crecer y construir amistades
+        más fuertes.    </p>
+
+    <div class="values-grid">
+
+        <article class="value-card">
+            <div class="symbol"><img src="aceptacion.jpeg" width="200" height="150"></div>
+            <h3>Aceptación</h3>
+            <p>
+                Cada persona tiene una forma única de pensar,
+                sentir y expresarse. Aprender a respetar esas
+                diferencias nos ayuda a convivir mejor.            </p>
+        </article>
+
+        <article class="value-card">
+            <div class="symbol"><img src="amistad.jpeg" width="200" height="150"></div>
+            <h3>Amistad</h3>
+            <p>
+                Una amistad se construye con confianza,
+                comunicación, respeto y apoyo mutuo,
+                incluso cuando pensamos diferente.            </p>
+        </article>
+
+        <article class="value-card">
+            <div class="symbol"><img src="trabajo en equipo.jpeg"  width="200" height="150"></div>
+            <h3>Trabajo en equipo</h3>
+            <p>
+                Cuando compartimos nuestras habilidades
+                y colaboramos con los demás, podemos
+                alcanzar metas que serían difíciles en solitario.            </p>
+        </article>
+
+        <article class="value-card">
+            <div class="symbol"><img src="empatia.jpeg" width="200" height="150"></div>
+            <h3>Empatía</h3>
+            <p>
+                Escuchar y tratar de comprender los sentimientos
+                de otras personas es una forma de demostrar
+                cariño y respeto.            </p>
+        </article>
+
+        <article class="value-card">
+            <div class="symbol"><img src="confianza.jpeg" width="200" height="150"></div>
+            <h3>Confianza</h3>
+            <p>
+                Reconocer nuestras capacidades y aprender
+                de nuestros errores nos ayuda a desarrollar
+                seguridad en nosotros mismos.            </p>
+        </article>
+
+        <article class="value-card">
+            <div class="symbol"><img src="autenticidad.jpeg"  width="200" height="150"></div>
+            <h3>Autenticidad</h3>
+            <p>
+                No necesitamos ser iguales a los demás
+                para tener valor. Nuestras cualidades,
+                gustos e ideas nos hacen especiales.            </p>
+        </article>
+    </div>
+</section>
+
+<!-- PIE DE P�GINA -->
+<footer>
+
+    <h3>🦄 CUTIE MARK 🦄</h3>
+
+    <p>
+        Descubre tu magia, celebra tus cualidades
+        y comparte la amistad.    </p>
+
+    <div class="footer-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#personajes">Personajes</a>
+        <a href="#test">Test de personalidad</a>
+        <a href="#amistad">La amistad</a>    </div>
+
+    <p>
+        Página creada con fines educativos para el trabajo final del primer parcial del Maestro Marco Antonio Ibarra Rulfo.    </p>
+
+    <p>
+        My Little Pony es una propiedad de sus respectivos titulares.
+        Este proyecto es una página de fans no oficia para fines educativos de las Pedagonenas Abeja y Abejorro.    </p>
+</footer>
+
+<!-- JAVASCRIPT: FUNCIONAMIENTO DEL TEST -->
+
+<script>
+const ponies = {
+    twilight: {
+        name: "¡Eres Twilight Sparkle! ✨",
+        symbol: '<img src="twilight 2.jpeg" alt="Twilight Sparkle" style="width:80px;height:80px;object-fit:contain;">',
+        traits: "Inteligencia, curiosidad, organización y aprendizaje.",
+        description:
+            "Eres una persona curiosa y reflexiva. Te gusta aprender cosas nuevas, organizar tus ideas y encontrar soluciones a los problemas. También valoras mucho a tus amistades y sabes que siempre hay algo nuevo por descubrir.",
+        message:
+            "Nunca dejes de aprender. Tu curiosidad puede abrirte muchas puertas, y compartir lo que sabes también es una forma de ayudar a los demás.",
+        tags: ["Inteligencia", "Aprendizaje", "Magia"]
+    },
+
+    rainbow: {
+        name: "¡Eres Rainbow Dash! 🌩️🌈",
+        symbol:  '<img src="rain.jpeg" alt="rain" style="width:80px;height:80px;object-fit:contain;">',
+        traits: "Lealtad, valentía, determinación y confianza.",
+        description:
+            "Eres una persona decidida que disfruta superar desafíos. Valoras la lealtad y procuras apoyar a las personas importantes para ti. Tu fuerza también está en reconocer cuándo necesitas ayuda.",
+        message:
+            "Confía en tus capacidades y recuerda que pedir apoyo también es una muestra de fortaleza.",
+        tags: ["Lealtad", "Valentía", "Determinación"]
+    },
+
+    pinkie: {
+        name: "¡Eres Pinkie Pie! 🎈",
+        symbol: '<img src="Pinkie.jpeg" alt="Pinkie" style="width:80px;height:80px;object-fit:contain;">',
+        traits: "Alegría, creatividad, espontaneidad y entusiasmo.",
+        description:
+            "Tienes una personalidad alegre y creativa. Disfrutas compartir buenos momentos, proponer ideas y encontrar motivos para sonreír. Tu entusiasmo ayuda a crear un ambiente agradable.",
+        message:
+            "Nunca subestimes el valor de una sonrisa. Recuerda que también está bien tener días tranquilos y expresar tus emociones.",
+        tags: ["Alegría", "Creatividad", "Entusiasmo"]
+    },
+
+    fluttershy: {
+        name: "¡Eres Fluttershy! 🦋",
+        symbol: '<img src="shy.jpeg" alt="shy" style="width:80px;height:80px;object-fit:contain;">',
+        traits: "Bondad, sensibilidad, empatía y comprensión.",
+        description:
+            "Eres una persona que presta atención a los sentimientos de los demás. Te gusta escuchar, cuidar y ofrecer apoyo cuando alguien lo necesita. Tu tranquilidad y amabilidad son cualidades valiosas.",
+        message:
+            "Tu bondad es especial. Recuerda cuidar también de ti, expresar tus opiniones y reconocer que tu voz merece ser escuchada.",
+        tags: ["Bondad", "Empatía", "Comprensión"]
+    },
+
+    applejack: {
+        name: "¡Eres Applejack! 🍎",
+        symbol: '<img src="apple.jpeg" alt="apple" style="width:80px;height:80px;object-fit:contain;">',
+        traits: "Honestidad, responsabilidad, esfuerzo y confianza.",
+        description:
+            "Eres una persona sincera y comprometida. Te importa cumplir tus responsabilidades y demostrar con acciones que los demás pueden confiar en ti. Valoras a las personas que forman parte de tu vida.",
+        message:
+            "Tu esfuerzo cuenta y tu honestidad es una gran cualidad. Recuerda que descansar y aceptar ayuda también forman parte del camino.",
+        tags: ["Honestidad", "Esfuerzo", "Responsabilidad"]
+    },
+
+    rarity: {
+        name: "¡Eres Rarity! 💎",
+        symbol: '<img src="rari.jpeg"alt="apple" style="width:80px;height:80px;object-fit:contain;">',
+        traits: "Creatividad, generosidad, imaginación y atención a los detalles.",
+        description:
+            "Tienes una mirada creativa y disfrutas expresar tus ideas de manera original. Te gusta cuidar los detalles y compartir tus talentos. También sabes que los pequeños gestos pueden hacer sentir especiales a los demás.",
+        message:
+            "Sigue expresando tu creatividad y compartiendo tus talentos. Tu valor no depende de la perfección: también está en lo que haces con cariño.",
+        tags: ["Creatividad", "Generosidad", "Imaginación"]
+    }
+};
+
+const quizForm = document.getElementById("quizForm");
+const resultBox = document.getElementById("resultado");
+const progressBar = document.getElementById("progress");
+const quizMessage = document.getElementById("quizMessage");
+
+/* ACTUALIZAR LA BARRA DE PROGRESO */
+quizForm.addEventListener("change", function() {
+    let answered = 0;
+
+    for (let i = 1; i <= 8; i++) {
+        if (
+            quizForm.querySelector(
+                'input[name="q' + i + '"]:checked'
+            )
+        ) {
+            answered++;
+        }
+    }
+
+    progressBar.style.width = (answered / 8 * 100) + "%";
+
+    quizMessage.textContent =
+        "Has respondido " + answered + " de 8 preguntas.";
+});
+
+/* CALCULAR EL RESULTADO */
+quizForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const scores = {
+        twilight: 0,
+        rainbow: 0,
+        pinkie: 0,
+        fluttershy: 0,
+        applejack: 0,
+        rarity: 0
+    };
+
+    /* CONTAR LAS RESPUESTAS */
+    for (let i = 1; i <= 8; i++) {
+        const selected = quizForm.querySelector(
+            'input[name="q' + i + '"]:checked'
+        );
+
+        if (!selected) {
+            quizMessage.textContent =
+                "¡Por favor, responde todas las preguntas! 🦄";
+            return;
+        }
+
+        scores[selected.value]++;
+    }
+
+    /* ENCONTRAR LA PUNTUACIÓN MÁS ALTA */
+    const highestScore = Math.max(
+        ...Object.values(scores)
+    );
+
+    /* IDENTIFICAR AL PONY GANADOR */
+    const winners = Object.keys(scores).filter(function(pony) {
+        return scores[pony] === highestScore;
+    });
+
+    /* SI HAY EMPATE, ELEGIR UNO AL AZAR */
+    const winner = winners[
+        Math.floor(Math.random() * winners.length)
+    ];
+
+    /* MOSTRAR EL RESULTADO */
+    showResult(ponies[winner], highestScore);
+});
+
+/* MOSTRAR LA INFORMACIÓN DEL PONY */
+function showResult(pony, score) {
+    const resultSymbol = document.getElementById("resultSymbol");
+
+    /* MOSTRAR IMAGEN O EMOJI */
+    resultSymbol.innerHTML = pony.symbol;
+
+    /* MOSTRAR NOMBRE Y DESCRIPCIÓN */
+    document.getElementById("resultName").textContent =
+        pony.name;
+
+    document.getElementById("resultTraits").textContent =
+        pony.traits;
+
+    document.getElementById("resultDescription").textContent =
+        pony.description;
+
+    document.getElementById("resultMessage").textContent =
+        pony.message;
+
+    /* MOSTRAR CUALIDADES */
+    const tagsContainer = document.getElementById("resultTags");
+
+    tagsContainer.replaceChildren();
+
+    pony.tags.forEach(function(tag) {
+        const span = document.createElement("span");
+
+        span.className = "result-trait";
+        span.textContent = tag;
+
+        tagsContainer.appendChild(span);
+    });
+
+    /* MOSTRAR LA SECCIÓN DEL RESULTADO */
+    resultBox.style.display = "block";
+
+    quizMessage.textContent =
+        "¡Test completado! Descubriste tu pony. 🦄";
+
+    /* DESPLAZARSE HACIA EL RESULTADO */
+    resultBox.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+}
+
+/* VOLVER A REALIZAR EL TEST */
+function restartQuiz() {
+    quizForm.reset();
+
+    resultBox.style.display = "none";
+    progressBar.style.width = "0%";
+    quizMessage.textContent = "";
+
+    document.getElementById("test").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+</script>
+
+
+</body>
+</html>
